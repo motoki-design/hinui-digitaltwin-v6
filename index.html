@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>日貫 デジタルツイン v6</title>
+<style>
+:root{ --bg:#0e1116; --pan:#161b22; --ln:#2b3340; --tx:#e6edf3; --dim:#9aa7b4; --ac:#4fc3f7; }
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:"Yu Gothic UI","Meiryo","Hiragino Kaku Gothic ProN",system-ui,sans-serif;
+  line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:56px 20px 88px}
+h1{font-size:28px;margin:0 0 6px;letter-spacing:.01em}
+.lead{color:var(--dim);font-size:14.5px;margin:0 0 40px}
+h2{font-size:14px;color:var(--ac);letter-spacing:.06em;margin:44px 0 14px;
+  border-bottom:1px solid var(--ln);padding-bottom:7px;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+a.card{display:block;background:var(--pan);border:1px solid var(--ln);border-radius:12px;
+  padding:22px 22px 20px;text-decoration:none;color:inherit;transition:.15s}
+a.card:hover{border-color:var(--ac);transform:translateY(-2px)}
+a.card h3{margin:0 0 4px;font-size:17px}
+a.card .n{color:var(--ac);font-size:12px;letter-spacing:.08em;font-weight:700;display:block;margin-bottom:9px}
+a.card p{margin:0 0 12px;font-size:13px;color:var(--dim)}
+a.card .spec{font-size:12px;color:var(--tx);opacity:.85}
+a.card .spec b{color:var(--ac)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 4px}
+th,td{text-align:left;padding:7px 10px 7px 0;border-bottom:1px solid var(--ln);vertical-align:top}
+th{color:var(--dim);font-weight:600;white-space:nowrap}
+ul{margin:8px 0 0;padding-left:1.2em;font-size:13.5px}
+li{margin:5px 0}
+.note{background:#1a1f27;border-left:3px solid #ffa726;border-radius:0 8px 8px 0;
+  padding:14px 18px;font-size:13px;color:#cfd8dc;margin:18px 0}
+.note b{color:#ffb74d}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--ln);
+  font-size:12px;color:var(--dim)}
+code{background:#1a1f27;padding:1px 6px;border-radius:4px;font-size:12px}
+@media (max-width:600px){ .wrap{padding:32px 16px 64px} h1{font-size:22px} }
+/* v3 F12-1（2026-10-13）：配るURLはこのページ1本。最上段に親指で押せる2つの大ボタン */
+.entry{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 14px}
+.entry a{display:flex;flex-direction:column;justify-content:center;min-height:96px;padding:14px 16px;border-radius:14px;
+  text-decoration:none;font-weight:800;font-size:20px;line-height:1.35}
+.entry a small{display:block;font-weight:600;font-size:12.5px;opacity:.85;margin-top:4px}
+.entry a.rec{background:#66bb6a;color:#08140a}
+.entry a.val{background:var(--ac);color:#0b1117}
+/* v6a（2026-10-18）：入口の先頭＝見る地図（2D・写真と区画を見る）。記録と谷はその下 */
+.entry a.view{grid-column:1 / -1;background:#ffd54f;color:#1b1500;min-height:88px}
+.entry2{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 30px;font-size:13.5px}
+.entry2 a{color:var(--tx);background:var(--pan);border:1px solid var(--ln);border-radius:10px;padding:9px 14px;text-decoration:none}
+.entry2 a b{color:#e040fb}
+.howto{background:#1a1f27;border-left:3px solid var(--ac);border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;
+  color:#cfd8dc;margin:0 0 30px;line-height:1.7}
+@media (max-width:600px){ .entry{grid-template-columns:1fr} .entry a{min-height:84px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>日貫 デジタルツイン v6（10/18 の踏査を反映）</h1>
+
+<div class="entry">
+  <a class="view" href="view/">見る地図<small>2D。踏査の記録と写真・区画（A区・B区・前回植樹エリア）を地図で見る。一覧から写真を開けます</small></a>
+  <a class="rec" href="record/">現地で記録する<small>スマートフォン・2D。立っている場所を地図でタップして点と写真を残す</small></a>
+  <a class="val" href="valley/">谷を見る<small>3D。実験林の谷を0.5 mの地形で見る（約25 MB）</small></a>
+</div>
+<div class="entry2">
+  <a href="record/?mode=plant"><b>植樹モード</b>で開く（先生・班用）</a>
+  <a href="wide/">広域（地区全体）</a>
+</div>
+<p class="howto"><b>山へ行く前に</b>（電波のある所で）：①Messenger や LINE の中で開いたときは、右上の「…」から<b>「Safariで開く」／「外部ブラウザーで開く」</b>
+②「現地で記録する」を開き、出てくる<b>出発前チェックの①〜③が✓</b>になるのを確かめる
+③iPhone は共有ボタン（□↑）→<b>「ホーム画面に追加」</b>。以後はそのアイコンから開けば、電波の無い山の中でも開けます。<br>
+Wi-Fi 版の iPad は GPS を持っていないので、現在地は動きません（記録は地図のタップで決められます）。</p>
+<p class="lead">島根県邑南町日貫地区。県の航空レーザー測量（0.5 m）にもとづく地形と、
+現地の計測を重ねて見るための試作です。ブラウザで開くだけで動きます（インストール不要・ネット接続不要）。スマートフォンでも見られます。</p>
+<p class="lead"><b>v6</b>：<b>見る地図</b>（<a href="view/">view/</a>）を足し、入口の先頭にしました。
+2026-10-18 の踏査で記録した <b>59地点・写真60枚</b>を、写真のサムネがそのまま地図の印になる形で載せています（左の一覧から開く・吹き出しから3Dへ）。
+<b>区画を3つに作り直しました</b>＝A区（今回植樹）・B区（旧B区＋C区）・前回植樹エリア（10/18 の杭と志賀さんのテープ実測から描いた枠。<b>点線はまだ測っていない辺</b>）。
+これまでの仮の枠（植栽区A〜C・伐採区D・E・現況植栽区・間伐区b.1〜b.6）と、推定の椿450本・植栽エリア（9/21）・伐採予定域（仮）・工事区（仮）・椿苗床の補正案は、
+重なって分かりにくくなっていたので画面から外しました（記録は残しています）。杭の層に、志賀さんが 10/6 に測った植栽区の境界6点を足しました。
+v5 は <a href="https://motoki-design.github.io/hinui-digitaltwin-v5/">https://motoki-design.github.io/hinui-digitaltwin-v5/</a> にそのまま残しています（植樹10/19の版）。
+現地記録は、出発前チェックの①〜③に✗があると、最初の「＋記録」で1回だけ注意を出すようにしました（記録は止めません。山の中で直せないときは「このまま記録する」）。</p>
+<p class="lead"><b>v5 追加（2026-10-13）</b>：入口を1本にしました（上の2つのボタン）。谷から現地記録へ・現地記録から谷へのボタンを足しました。
+Messenger などのアプリの中で開いたときに、外部のブラウザーで開き直す案内を出します。現地記録は起動時に<b>出発前チェック</b>（ブラウザー・オフライン・位置情報・ホーム画面）を出し、
+ホーム画面に追加できるようにしました。現在地は最初の1回の測位でなく、<b>最長20秒ためていちばん精度の良い値</b>を採り、画面の上に「GPS ±xx m・n秒前」を出します。
+タブレットでは谷のパネルを画面下のタブにまとめ、パソコンでもパネルを畳めるようにしました。現地記録の種類に「杭」を足しました。</p>
+<p class="lead"><b>v5 追加（2026-10-01）</b>：現地記録に<b>植樹モード</b>を足しました（<a href="record/?mode=plant">record/?mode=plant</a> で開く）。班を選び、「植えた」→写真（なくてもよい）→保存の3回で、植えた本数と区画が記録されます。谷には「日貫小学校の植樹（10/19〜20）」の層（区画別・班別の本数）を足しました。<b>植樹の写真は公開していません</b>（点と本数だけ）。共有フォルダ「現地記録_自動反映」に入れた写真と記録は、平日の夕方（17:35）に取り込んで載せます。</p>
+<p class="lead"><b>v5（2026-09-30）で変えたこと</b>：10/19〜20 の日貫小学校ほかの植樹に向けて、<b>区画の枠</b>（植栽区A・B・C／伐採区D・E1〜E3／現況植栽区／間伐区b.1〜b.6）と<b>杭7点</b>（志賀さん測定）を谷と現地記録の両方に載せました。枠はいただいた図をなぞった<b>仮の位置（±5〜10 m）</b>です。谷の版では、<b>スマートフォンで写真の点を押しても出にくかった不具合</b>を直しました（指が点から少しずれても拾う・「地形」で詳細が閉じる）。現地記録の背景に<b>傾斜量図と10 cmの局所起伏</b>を足しました。v4は <a href="https://motoki-design.github.io/hinui-digitaltwin-v4/">https://motoki-design.github.io/hinui-digitaltwin-v4/</a> にそのまま残しています。</p>
+<p class="lead"><b>v4（2026-09-28）で変えたこと</b>：実験林の谷を<b>スマートフォンの指で操作できる</b>ようにしました。1本指で動かす／2本指でつまんで寄る・広げて引く／2本指をひねって回す。<b>画面の横幅5 mまで寄れ</b>、画面下に今の横幅（m）が出ます。「現在地を出す」では、端末のGPSの精度を<b>実寸の円</b>で描きます。広域はv3と同じです。同日、スマートフォンで現地の点を記録する<b>現地記録（2D・試作）</b>を足しました。v3は <a href="https://motoki-design.github.io/hinui-digitaltwin-v3/">https://motoki-design.github.io/hinui-digitaltwin-v3/</a> にそのまま残しています。</p>
+
+<div class="cards">
+  <a class="card" href="view/">
+    <span class="n">2D ／ 写真と区画</span>
+    <h3>見る地図</h3>
+    <p>踏査で記録した点を、<b>写真のサムネがそのまま印</b>になった地図で見る版。左の一覧を押すとその点へ飛び、吹き出しに写真・メモ・区画・地形の読み（微地形・傾斜・流路までの距離）が出ます。背景は陰影・CS立体図・傾斜量図など6枚から選べます。</p>
+    <div class="spec">記録 <b>59地点・写真60枚</b>（2026-10-18）／区画3面／杭13点<br>
+      志賀さん撮影 110点・踏査の写真 220点（既定は非表示）／約20 MB</div>
+  </a>
+  <a class="card" href="valley/">
+    <span class="n">0.5 m ／ 400 m 四方</span>
+    <h3>実験林の谷</h3>
+    <p>椿の植栽をしている斜面を、原本の粒のまま見る版。開いたときに出るのは<b>区画3面</b>・<b>10/18 の記録の点</b>・杭・流路で、写真や区域は「重ねる」のチェックを入れると出ます。見る地図の吹き出しの「3Dで見る」から、その点へ寄った状態で開けます。</p>
+    <div class="spec">地形 <b>641,601点</b>（0.5 m格子）／地表の絵 8枚<br>
+      うち <b>10 cm の陰影・局所起伏</b>（0.098 m/px・地上計測の点群から作った地面）<br>
+      現地写真 <b>220点</b>（8/19 48点＋9/21 172点）／点群 <b>551,075点</b>（色つき）／土砂災害警戒区域 11面<br>      現地で取った点の受け皿・<b>現在地</b>・<b>エリアを描いて書き出す</b><br>      施設 5件（★治山えん堤の訂正）<br>      区画 <b>A区 226 m²・B区 1,514 m²・前回植樹エリア 553 m²</b>／現地記録の点 <b>59</b>（10/18）</div>
+  </a>
+  <a class="card" href="record/">
+    <span class="n">2D ／ スマートフォン向け</span>
+    <h3>現地記録（試作）</h3>
+    <p>実験林の谷を真上から見て、<b>立っている場所を地図でタップして点を記録</b>する版。椿（白テープの番号）・土壌・観察・撮影ポイント・センサーを、写真と向きごと端末に貯めて1つのファイルに書き出します。計画点への<b>ナビ</b>（直線と距離）もあります。</p>
+    <div class="spec">電波の無い谷で使う前に、電波のある所で一度開いてください（「オフライン可」が出れば準備済み）<br>
+      記録は端末の中だけに残ります（サーバには送りません）／約5.7 MB（最初の1回は電波の良い所で）<br>
+      <b>植樹モード</b>＝このページの URL の後ろに <b>?mode=plant</b>（設定からも切り替え可）</div>
+  </a>
+  <a class="card" href="wide/">
+    <span class="n">2 m ／ 1.5 km 四方</span>
+    <h3>広域（地区全体）</h3>
+    <p>雨を粒で降らせて流れを追う版に、微地形の区分を足したもの。地区の全体像はこちら。</p>
+    <div class="spec">全域 10 m ＋ 詳細窓 <b>2 m・564,001点</b>／地表の絵 8枚<br>
+      雨のシミュレーション／管理断面の流量・水深／微テラス候補 248件</div>
+  </a>
+</div>
+
+<h2>何が見えるか</h2>
+<table>
+<tr><th>地形そのもの</th><td>多方向陰影・傾斜量図・CS立体図相当・赤色立体図近似（開度）。0.5 m の版では、作業道・段・掘り込みがそのまま出ます</td></tr>
+<tr><th><b>10 cm の地面</b></th><td>地上計測の点群（1億604万点）から地面だけを取り出して作った標高。0.5 m では見えない、長さ5〜15 m・高低差 0.1〜0.2 m の線状の凹凸が出ます。<b>灰色は計測が届いていない範囲</b>で、色がついている範囲でも地面として実測できたのは点のあるセルの3割弱、残りは内挿です</td></tr>
+<tr><th>微地形の区分</th><td>①凹地・集水線／②凸地・尾根／③直線斜面／④微テラス の4区分。固定した閾値で機械的に分けています（判定に生成AIは使っていません）</td></tr>
+<tr><th>水</th><td>流路（集水面積 0.5 ha 以上）・0次谷の谷頭。広域版では雨の強さと継続時間を変えて流下を追えます</td></tr>
+<tr><th>災害の区域</th><td>土砂災害警戒区域（急傾斜地の崩壊・土石流）。国土数値情報 A33</td></tr>
+<tr><th>施設</th><td>2026-09-21 の踏査で確かめた<b>治山えん堤</b>（銘板「昭和54年度 復旧治山事業・島根県」・堆砂は天端まで満杯）、取水小屋、祠、標柱。<b>訂正</b>：谷の出口にあるのは砂防えん堤ではなく治山えん堤で、地形から同定していたもう1基とは 290 m 離れた別の構造物です</td></tr>
+<tr><th>区画（v6）</th><td><b>A区</b>（今回植樹・約25×10 m・226 m²）は四隅の杭4本（2026-10-18）で閉じた枠です。<b>B区</b>（旧B区＋C区・約1,514 m²）は北面（テープ21 m）と東辺（杭4本・テープ約77 m）を測り、<b>西辺と南辺はまだ測っていない仮の線（点線）</b>です。<b>前回植樹エリア</b>（553 m²）は志賀さんが 10/6 に測った6点と 10/18 の南東角の杭から描いています。杭の位置はスマートフォンの画面で決めたもので、±3 m 程度の幅があります</td></tr>
+<tr><th>杭</th><td>志賀さんが Field Area Measure で測った杭7点（9/29）と植栽区の境界6点（10/6）。スマートフォンのGPSの位置で ±10 m 程度ずれます。同じ番号の杭は線で結んでいます</td></tr>
+<tr><th>現地記録（10/18）</th><td>現地記録アプリで記録した 59地点（椿・杭・観察・土壌・撮影ポイント）と写真60枚。位置は地図のタップで決めたもの（精度は点ごとに表示）。見る地図で写真ごと見られます</td></tr>
+<tr><th>現地の計測</th><td>2026-08-19 と 2026-09-21 の現地調査の写真と位置（9/21分は場面ごとに色を分け、現地で話に出た写真に★を付けています）、地上計測の点群（色つき）、椿苗床の区画（記録された座標のまま）</td></tr>
+</table>
+
+<h2>数字の扱い</h2>
+<div class="note">
+<b>この画面の数値は検証中のものです。</b>
+微テラスは<b>候補</b>で、偽陽性が混ざります（古い道や作業道の盛土が微テラスに見えます）。
+点群の位置は、県の0.5 m 標高データとセルごとの最低点で突き合わせ、<b>中央値 −0.13 m</b> で合っていることを確かめてありますが、
+写真の位置はスマートフォンのGNSSで、林の中では 10 m 程度の誤差があります。
+椿苗床の区画は、記録されている標高が県の標高データと <b>11〜21 m</b> 食い違っています（地形から推した補正案は v6 で画面から外しました）。
+区画の枠は、杭をスマートフォンの画面で決めた位置から描いたもので、<b>±3 m 程度</b>の幅があります。
+10 cm の地面は、県の標高データとの差が中央値 <b>−0.07 m</b>、点群側の地面分類との差が中央値 <b>+0.08 m</b> ですが、
+線状の凹凸が倒木や石組みなのか、残った下草なのかは現地で確かめる必要があります。
+現地で確かめる前提の試作としてご覧ください。
+</div>
+
+<h2>出どころ</h2>
+<ul>
+<li>地形（0.5 m DTM・樹冠高）＝島根県提供の航空レーザー測量データ。<b>用途は学術利用</b></li>
+<li>土砂災害警戒区域＝国土数値情報 A33／建物・道路＝国土地理院ベクトルタイル／地質＝産総研 20万分の1日本シームレス地質図V2</li>
+<li>雨量＝気象庁アメダス（瑞穂）／現地写真・地上計測の点群・椿苗床の区画＝現地調査および関係者提供</li>
+<li>座標系はすべて <code>EPSG:6671</code>（JGD2011 平面直角座標系 第Ⅲ系）、標高は T.P.</li>
+</ul>
+
+<h2>作りかた</h2>
+<ul>
+<li>単一のHTMLファイルに、標高・地表の絵・点群をすべて埋め込んであります。<b>外部から読み込むものはありません</b></li>
+<li>3D描画は three.js r160（同梱）／見る地図は Leaflet 1.9.4（同梱）</li>
+<li>谷の版 約25 MB ／ 見る地図 約20 MB ／ 広域の版 18.5 MB。回線の細いところでは開くまで少し時間がかかります</li>
+<li><b>スマートフォンでも見られます。</b>画面が狭いときは操作パネルを画面下のタブにまとめ、既定では畳んであります（地形が全面に出ます）。下のタブを押すと1枚ずつ開き、「地形」でぜんぶ閉じます。谷の版は指で操作できます（1本指＝動かす・2本指＝寄る／回す。傾きは「視点」のボタンで変えます）</li>
+</ul>
+
+<footer>
+株式会社エブリプラン 事業創発室　｜　v3 2026-09-21 公開（同日 10 cm の地面を追加）／v4 2026-09-28 公開（谷をスマートフォンの指で操作できるように）／v5 2026-09-30 公開（植樹に向けて区画・杭・写真の不具合）・10-01 植樹モードと共有フォルダの取り込み／v6 公開（見る地図・区画を3面に作り直し・10/18 の踏査59地点）<br>
+このページは検索エンジンの巡回を止めていますが、<b>URLを知っていれば誰でも開けます</b>。
+</footer>
+
+</div>
+</body>
+</html>
