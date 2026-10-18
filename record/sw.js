@@ -1,5 +1,5 @@
 /* 日貫 現地記録（2D）— オフライン用。版が変わると古いキャッシュを消す */
-const C = "hinui-record-ccf25f2f";
+const C = "hinui-record-1911b61f";
 self.addEventListener("install", e => {
   // v3 F13-4：ホーム画面アプリの manifest とアイコンも同じキャッシュに（電波の無い所でアイコンから起動できる）
   e.waitUntil(caches.open(C).then(c => c.addAll(["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"]))
